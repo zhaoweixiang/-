@@ -108,7 +108,7 @@
         }else{
             $("#cg_confirm").bind("click");
         }
-        var re = /^[\u4e00-\u9fa5]{1}[A-Z]{1}[A-Z_0-9]{5}$/;
+        var re = /^[\u4e00-\u9fa5]{1}[A-Z]{1}[A-Z_0-9]{6}$/;
         var v = $('#passText').html();
         if(!re.test(v)){
             popBox('车牌号格式不正确');
