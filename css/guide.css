@@ -1,0 +1,29 @@
+header {
+  width: 16rem;
+  height: 2rem; }
+  header h2 {
+    width: 100%;
+    font-size: 0.5rem;
+    color: #000;
+    text-align: center;
+    line-height: 2rem;
+    overflow: hidden; }
+    header h2 a {
+      float: left;
+      width: 0.9rem;
+      height: 1rem;
+      background: url("../images/fh.png") no-repeat center;
+      background-size: 90%;
+      margin-top: 0.5rem;
+      margin-left: 0.5rem; }
+
+section {
+  width: 16rem; }
+  section .sec_a {
+    width: 100%; }
+    section .sec_a li {
+      width: 100%; }
+      section .sec_a li img {
+        width: 5.625rem;
+        height: 5.75rem;
+        margin-left: 0.5rem; }

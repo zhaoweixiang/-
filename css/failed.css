@@ -1,0 +1,29 @@
+html, body {
+  background: #eee; }
+
+content {
+  width: 16rem;
+  display: block;
+  padding-bottom: 2.5rem; }
+  content div {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    line-height: 100%;
+    padding-top: 5rem;
+    padding-bottom: 1.25rem; }
+    content div img {
+      width: 4.5rem;
+      height: 4.5rem; }
+  content ul {
+    width: 100%; }
+    content ul li:nth-child(1) {
+      font-size: 1rem;
+      text-align: center;
+      line-height: 100%;
+      color: #000; }
+    content ul li:nth-child(2) {
+      font-size: 0.75rem;
+      text-align: center;
+      color: #515151;
+      padding-top: 0.75rem; }

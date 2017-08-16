@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html style="font-size: 20px;font-family:'Microsoft YaHei', '华文楷体', Helvetica, '黑体', Arial, Tahoma;">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0/no">
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>越畅通</title>
+    <link rel="stylesheet" href="../css/public.css" type="text/css">
+    <link rel="stylesheet" href="../css/newPublic.css">
+    <link rel="stylesheet" href="../css/add_licenseAndreplace_pay.css" type="text/css">
+    <link rel="stylesheet" href="../css/passwordkeyboard.css" type="text/css">
+    <script src="../js/jQuery-1.11.3.min.js"></script>
+    <script src="../js/jquery.cookie.js"></script>
+    <script src="../js/pay2.js"></script>
+    <script>
+        (function(win,doc){
+            win.addEventListener('resize',change,false);
+            function change(){
+                doc.documentElement.style.fontSize = doc.documentElement.clientWidth*20/320+'px';
+            }
+            change();
+        })(window,document);
+    </script>
+</head>
+<body>
+<div id="bodyer" style="padding-top:0px;">
+    <div class="imgCar"></div>
+    <div class="noMember-tip center">请输入车牌号快速缴费</div>
+    <div class="content">
+        <div class="passDiv2" style="margin-bottom:1.02rem">
+            <form id="password" disabled="disabled">
+                <input readonly="" class="pass pass_left curr" maxlength="1" value="京">
+                <input readonly="" class="pass" maxlength="1" value="">
+                <input readonly="" class="pass" maxlength="1" value="">
+                <input readonly="" class="pass" maxlength="1" value="">
+                <input readonly="" class="pass" maxlength="1" value="">
+                <input readonly="" class="pass" maxlength="1" value="">
+                <input readonly="" class="pass" maxlength="1" value="">
+                <input readonly="" class="pass pass_right" maxlength="1" value="">
+            </form>
+        </div>
+        <div id="passText" class="hide"></div>
+    </div>
+    <div class="wx_btn wx_btn_no" id="cg_confirm" style=" margin:0rem .22rem .6rem .22rem;
+		 " onclick="queryPlateNumber()">查询</div>
+    <div class="center" style="margin:0 0.22rem;">
+        <a class="newEnergy" id="energy"
+           onclick="hrefChange('pay2.html')">切换为普通车&gt;&gt;</a>
+        <a class="skip newEnergyR hide"
+           onclick="hrefChange('userCenter_account.html')">跳过&gt;&gt; </a>
+    </div>
+    <div id="keyboardDIV">
+        <div id="key" style="background-color: rgb(209, 213, 218); width: 100%; bottom: 0px; position: absolute;">
+            <ul class="write" id="keyboard" style="font-size:20px;">
+                <li class="tab_sure"><span class="sure">确定</span></li>
+                <li class="symbol tab_left"><span class="off">京</span></li>
+                <li class="symbol"><span class="off">津</span></li>
+                <li class="symbol"><span class="off">沪</span></li>
+                <li class="symbol"><span class="off">渝</span></li>
+                <li class="symbol"><span class="off">蒙</span></li>
+                <li class="symbol"><span class="off">新</span></li>
+                <li class="symbol"><span class="off">藏</span></li>
+                <li class="symbol"><span class="off">宁</span></li>
+                <li class="symbol"><span class="off">桂</span></li>
+                <li class="symbol"><span class="off">贵</span></li>
+                <li class="symbol"><span class="off">云</span></li>
+                <li class="symbol"><span class="off">黑</span></li>
+                <li class="symbol"><span class="off">吉</span></li>
+                <li class="symbol"><span class="off">辽</span></li>
+                <li class="symbol"><span class="off">晋</span></li>
+                <li class="symbol"><span class="off">冀</span></li>
+                <li class="symbol"><span class="off">青</span></li>
+                <li class="symbol"><span class="off">鲁</span></li>
+                <li class="symbol"><span class="off">豫</span></li>
+                <li class="symbol"><span class="off">苏</span></li>
+                <li class="symbol"><span class="off">皖</span></li>
+                <li class="symbol"><span class="off">浙</span></li>
+                <li class="symbol"><span class="off">闽</span></li>
+                <li class="symbol"><span class="off">赣</span></li>
+                <li class="symbol"><span class="off">湘</span></li>
+                <li class="symbol"><span class="off">鄂</span></li>
+                <li class="symbol"><span class="off">粤</span></li>
+                <li class="symbol"><span class="off">琼</span></li>
+                <li class="symbol"><span class="off">甘</span></li>
+                <li class="symbol"><span class="off">陕</span></li>
+                <li class="symbol"><span class="off">川</span></li>
+                <li class="symbol"><span class="off">港</span></li>
+                <li class="symbol"><span class="off">澳</span></li>
+                <li class="delete lastitem"><img class="del" src="../images/tjcl_kb_del.png"></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="notice"></div>
+<script src="../js/common.js"></script>
+<script>
+    if($("#cg_confirm").hasClass("wx_btn_no")){
+        $("#cg_confirm").unbind();
+    }else{
+        $("#cg_confirm").bind("click");
+    }
+    function queryPlateNumber(u){
+        if($("#cg_confirm").hasClass("wx_btn_no")){
+            $("#cg_confirm").unbind();
+            return false;
+        }else{
+            $("#cg_confirm").bind("click");
+        }
+        var re = /^[\u4e00-\u9fa5]{1}[A-Z]{1}[A-Z_0-9]{5}$/;
+        var v = $('#passText').html();
+        if(!re.test(v)){
+            popBox('车牌号格式不正确');
+            return;
+        }else{
+            var param = {
+                data:{
+                    plateNumber:v
+                }
+            };
+//				$.ajax({
+//					type : "post",
+//					data : {'param':JSON.stringify(param)},
+//					url :default_url+"tobOrder/queryEntryRecordByPlateNumber",
+//					async:false,
+//					dateType : "json",
+//					success : function(response) {
+//						var resp = JSON.parse(response);
+//						if(resp.code == '0000'){
+//							var isBind = $.cookie('isBind');
+//							if( isBind != 1){
+//								goPage(resp.data.TobOrder,'parkPay-noMember-detail.html');
+//							}else{
+//								goPage(resp.data.TobOrder,'parkPay-memberScan.html');
+//							}
+//						}else{
+//							hrefChange('failed.html');
+//							return;
+//						}
+//					},
+//					fail:function(){
+//						popBox('网络异常，请稍后重试');
+//					},
+//					error : function(err) {
+//						if (err.status == 910) {
+//							updateToken();
+//						}
+//						else{
+//							popBox("网络错误!");
+//						}
+//					}
+//				});
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0/no">
+    <meta content="telephone=no,email=no" name="format-detection"/>
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <title>查询失败</title>
+    <link rel="stylesheet" href="../css/common.css"/>
+    <link rel="stylesheet" href="../css/base.css"/>
+    <link rel="stylesheet" href="../css/failed.css"/>
+    <script>
+        (function(win,doc){
+            win.addEventListener('resize',change,false);
+            function change(){
+                doc.documentElement.style.fontSize = doc.documentElement.clientWidth*20/320+'px';
+            }
+            change();
+        })(window,document);
+    </script>
+</head>
+<body>
+    <content>
+        <div>
+            <img src="../images/cxsb_icon.png" alt=""/>
+        </div>
+        <ul>
+            <li>查询失败</li>
+            <li>没有查到相关缴费订单，请从新输入</li>
+        </ul>
+    </content>
+</body>
+</html>
